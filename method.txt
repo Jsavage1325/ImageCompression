@@ -1,0 +1,42 @@
+Encoding Algorithm
+- Load the image into a NumPy array
+- Split the colours into 3 separate NumPy arrays - split_rgb(image)
+- Get frequency list from most common to least common get_sorted_frequency_list(colour_part_image)
+- Use the sorted list of 256 values with unique_codes.txt to make a dictionary to encode create_dictionary(arr)
+- Encode the image using the encoding values in the dictionary encode(y, x, colour_part_image, order)
+   - In this function the create_dictionary function will be called
+- Once we have returned the 3 parts of the image that are encoded we will need to save them in the following order:
+    - x and y (dimensions of image)
+    - red_dict and red_encoded
+    - green_dict and green_encoded
+    - blue_dict and blue_encoded
+
+
+
+
+Huffman Coding
+Huffman coding is based on the fact that some data is used more frequently
+Using standard representation, each has the same number of bit depth
+Huffman coding assigns variable length codes
+The more frequently a character is used, the shorter the Huffman code
+Creates a binary huffman tree that needs to be stored alongside the data
+
+start with example "Huffman"
+char H u f m a n
+freq 1 1 2 1 1 1
+Create frequency histogram? not necessary but we could do it
+1. create a node for each character and label each with frequency
+2. arrange nodes in ascending frequency
+3. take the first two nodes and join them, with the new parent node's label
+being the combined frequency of the two nodes
+4. Insert this node with the children into the ordered list
+5. Repeat 3 and 4 until there is only one node
+
+the questions I have are
+do we need to make subimages?
+do we need to forward transform? what is forward transform?
+do we need to quantise?
+
+decode
+if we forward transform, we need to inverse transform
+then we need to merge sub images
